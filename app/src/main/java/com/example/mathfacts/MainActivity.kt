@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         if (isNetworkConnected()) {
             getMathFact()
@@ -25,7 +26,16 @@ class MainActivity : AppCompatActivity() {
                 .setIcon(android.R.drawable.ic_dialog_alert).show()
         }
 
-        setContentView(R.layout.activity_main)
+        btnNewFact.setOnClickListener {
+            if (isNetworkConnected()) {
+                getMathFact()
+            } else {
+                AlertDialog.Builder(this).setTitle("No Internet Connection!")
+                    .setMessage("Please check your internet connection and try again.")
+                    .setPositiveButton(android.R.string.ok) {_, _ ->}
+                    .setIcon(android.R.drawable.ic_dialog_alert).show()
+            }
+        }
     }
 
     private fun isNetworkConnected(): Boolean {
