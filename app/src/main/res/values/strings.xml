@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Math Facts</string>
+    <string name="get_new_math_fact">Get New Math Fact</string>
+    <string name="loading">Loading...</string>
 </resources>
